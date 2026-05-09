@@ -3,129 +3,122 @@
 [![PHP Version](https://img.shields.io/badge/PHP-8.x-777BB4?style=flat&logo=php&logoColor=white)](https://php.net)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat&logo=mysql&logoColor=white)](https://mysql.com)
 [![OpenAI](https://img.shields.io/badge/OpenAI-API-412991?style=flat&logo=openai&logoColor=white)](https://openai.com)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-> Plateforme SaaS de détection de talents sportifs par intelligence artificielle
+> **Plateforme SaaS de détection de talents sportifs par intelligence artificielle**  
+> *La première plateforme marocaine qui connecte professeurs d'EPS, recruteurs et clubs grâce à l'IA*
+
+---
+
+## 📸 Aperçu de la plateforme
+
+| Page d'accueil | Connexion |
+|----------------|-----------|
+| ![Landing](Capture%20d'écran%202026-05-09%20115306.png) | ![Login](Capture%20d'écran%202026-05-09%20115333.png) |
+
+| Dashboard Professeur | Upload vidéo |
+|----------------------|--------------|
+| ![Professeur](Capture%20d'écran%202026-05-09%20115344.png) | ![Upload](Capture%20d'écran%202026-05-09%20115411.png) |
+
+| Dashboard Élève | Dashboard Manager |
+|-----------------|-------------------|
+| ![Élève](Capture%20d'écran%202026-05-09%20115444.png) | ![Manager](Capture%20d'écran%202026-05-09%20115501.png) |
+
+| Dashboard Recruteur | Dashboard Coach |
+|--------------------|-----------------|
+| ![Recruteur](Capture%20d'écran%202026-05-09%20115519.png) | ![Coach](Capture%20d'écran%202026-05-09%20115546.png) |
+
+| Messagerie intégrée |
+|---------------------|
+| ![Messages](Capture%20d'écran%202026-05-09%20115605.png) |
+
+---
+
+## 🧠 Problématique résolue
+
+**Détection insuffisante des talents sportifs dès le plus jeune âge au Maroc.**
+
+Aujourd'hui, la détection repose sur des méthodes artisanales (observation terrain, bouche-à-oreille). Les professeurs d'EPS manquent d'outils objectifs, et les recruteurs n'ont pas accès facilement aux viviers de talents locaux.
+
+**Atlas Talents industrialise ce processus grâce à l'IA.**
+
+---
 
 ## 🤖 Agent IA – Analyse vidéo intelligente
 
-- Extraction automatique des keyframes côté navigateur
-- Analyse via **OpenAI GPT-4.1-mini** (vision)
-- Scoring sur 5 critères : Vitesse, Coordination, Endurance, Force, Souplesse
-- Génération de résumés, points forts, axes de progression et recommandations
-- Mode démo intelligent si l’API OpenAI n’est pas configurée
+| Fonctionnalité | Description |
+|----------------|-------------|
+| **Extraction automatique** | Keyframes extraites côté navigateur (6 images clés) |
+| **Analyse vision** | via OpenAI GPT-4.1-mini |
+| **5 critères physiques** | Vitesse, Coordination, Endurance, Force, Souplesse |
+| **Scoring global** | 0-100, pondéré selon le sport |
+| **Résumé intelligent** | Points forts, axes de progression, recommandations |
+| **Mode démo** | Analyse locale cohérente si clé API manquante |
+
+---
 
 ## 👥 6 rôles métiers – Dashboards dédiés
 
 | Rôle | Fonctionnalités clés |
 |------|----------------------|
-| 👨‍🏫 Professeur | Upload vidéo + analyse IA, suivi élèves, export PDF |
-| 👟 Élève | Dashboard personnel, scores, progression |
-| 🧭 Manager recrutement | Pipeline talents, shortlist, messagerie fédérée |
-| 🏢 Recruteur | Filtres avancés, favoris, messagerie |
-| 🏅 Coach | Suivi athlètes, graphiques Chart.js, radar IA |
-| 🔧 Admin | Supervision plateforme, monitoring |
+| 👨‍🏫 **Professeur** | Upload vidéo, analyse IA automatique, suivi élèves, scores de classe, export PDF |
+| 👟 **Élève** | Dashboard personnel, consultation scores, progression, objectifs, plan d'action |
+| 🧭 **Manager recrutement** | Pipeline talents, shortlist prioritaire, messagerie fédérée, couverture géographique |
+| 🏢 **Recruteur** | Filtres avancés (sport, ville, score min), système de favoris, messagerie |
+| 🏅 **Coach** | Suivi athlètes, graphiques Chart.js, radar de performance, recommandations IA |
+| 🔧 **Admin** | Supervision plateforme, monitoring, gestion utilisateurs |
+
+---
+
+## ✨ Fonctionnalités phares
+
+### 🔐 Authentification multi-rôles
+- Sessions sécurisées (HttpOnly, SameSite=Lax, Secure)
+- CSRF tokens sur tous les formulaires sensibles
+- Mot de passe hashés (bcrypt)
+- 6 profils distincts avec redirection automatique
+
+### 💬 Messagerie intelligente
+- Détection automatique des contacts pertinents (selon étudiants partagés)
+- Suggestions de messages contextuelles
+- Marquage auto des conversations lues
+- Stockage hybride (MySQL + fallback JSON)
+
+### ⭐ Système de favoris
+- Persistant (MySQL + fallback JSON)
+- Synchronisation temps réel
+- Badge de compteur dynamique
+
+### 📊 Graphiques interactifs
+- Chart.js : line, bar, radar, doughnut
+- Filtrage par période (3, 6, 12 mois)
+- Métriques au survol
+
+### 📄 Export PDF
+- Génération dynamique de rapports
+- Graphiques et tableaux inclus
+- Adapté à chaque rôle
+
+### 🔒 Sécurité
+- CSP configurable (HTML, API, média)
+- Stockage vidéo hors webroot
+- Serveur vidéo authentifié (`media.php`)
+- En-têtes HTTP (X-Frame-Options, HSTS, Referrer-Policy)
+
+---
 
 ## 🛠️ Stack technique
 
 | Catégorie | Technologies |
 |-----------|--------------|
-| Backend | PHP 8, PDO, MySQL, sessions sécurisées |
-| Frontend | HTML5/CSS3, JavaScript vanilla, Design System custom |
-| IA | OpenAI API (vision), extraction keyframes navigateur |
-| Graphiques | Chart.js (line, bar, radar, doughnut) |
-| Sécurité | CSRF, CSP, en-têtes HTTP, stockage hors webroot |
-| API | REST endpoints (JSON) |
-PHP/MySQL platform for sports talent detection, role-based dashboards, messaging, and AI-assisted video analysis.
+| **Backend** | PHP 8, PDO, MySQL, sessions sécurisées |
+| **Frontend** | HTML5/CSS3, JavaScript vanilla, Design System custom |
+| **IA / Vision** | OpenAI API (GPT-4.1-mini), extraction keyframes navigateur |
+| **Graphiques** | Chart.js (line, bar, radar, doughnut) |
+| **Sécurité** | CSRF, CSP, en-têtes HTTP, stockage hors webroot |
+| **API** | REST endpoints (JSON) – étudiants, progrès, stats, uploads, favoris, chat |
+| **PDF** | Génération dynamique via `exportDashboardPdf()` |
 
-## Production Notes
+---
 
-- `schema.sql` is now schema-only. It does not create demo accounts.
-- Optional demo seed data lives in `seed_demo.sql`.
-- Demo mode is disabled by default. Enable it only for local development with `APP_ALLOW_DEMO_MODE=1`.
-- Uploaded videos are stored outside the public web root in `storage/uploads/` by default and are served through authenticated requests in `media.php`.
-- Public self-registration is restricted by `APP_ALLOWED_PUBLIC_REGISTRATION_ROLES` and defaults to `teacher`.
-
-## Environment
-
-Configure these variables in your web server or PHP environment:
-
-```text
-APP_ENV=production
-APP_URL=https://your-domain.example
-APP_DEBUG=0
-APP_ALLOW_DEMO_MODE=0
-APP_DEMO_ACCESS_SECRET=
-APP_ALLOWED_PUBLIC_REGISTRATION_ROLES=teacher
-
-DB_HOST=localhost
-DB_NAME=atlas_talents
-DB_USER=atlas_user
-DB_PASS=change-me
-DB_CHARSET=utf8mb4
-
-OPENAI_API_KEY=
-OPENAI_MODEL=gpt-4.1-mini
-OPENAI_API_URL=https://api.openai.com/v1/responses
-OPENAI_TIMEOUT=90
-AI_ALLOW_DEMO_FALLBACK=0
-```
-
-Optional:
-
-```text
-APP_STORAGE_ROOT=/absolute/path/outside/webroot
-```
-
-## Owner Demo Access
-
-If you want fast personal demo access on a public deployment without restoring public demo credentials:
-
-1. Set `APP_DEMO_ACCESS_SECRET` to a strong private value.
-2. Open:
-
-```text
-https://your-domain.example/pages/auth/login.php?demo_key=your-secret
-```
-
-3. The login page will unlock one-click demo session buttons for your browser session only.
-
-This is safer than permanent public demo logins, but the secret still grants privileged demo access. Treat it like a password and rotate it if exposed.
-
-## Setup
-
-1. Import the schema:
-
-```bash
-mysql -u your_user -p < schema.sql
-```
-
-2. Optionally load demo data in a non-production environment:
-
-```bash
-mysql -u your_user -p atlas_talents < seed_demo.sql
-```
-
-3. Ensure PHP can write to:
-
-- `storage/uploads/`
-- `storage/private/`
-
-4. Serve the project through Apache or another PHP-capable web server with HTTPS enabled.
-
-## Security Defaults
-
-- Session cookies use `HttpOnly`, `SameSite=Lax`, and `Secure` when the request is HTTPS.
-- Logout requires `POST` plus CSRF validation.
-- API errors are generic by default unless `APP_DEBUG=1`.
-- Legacy files under `public/uploads/` are protected by `.htaccess`.
-
-## Development
-
-If you explicitly want demo behavior locally:
-
-```text
-APP_ENV=development
-APP_ALLOW_DEMO_MODE=1
-APP_ALLOWED_PUBLIC_REGISTRATION_ROLES=teacher,manager,recruiter,coach
-AI_ALLOW_DEMO_FALLBACK=1
-```
+## 📁 Architecture du projet
