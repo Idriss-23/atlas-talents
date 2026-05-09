@@ -1,96 +1,68 @@
-# Atlas Talents
+# Atlas Talents 🎯
 
-PHP/MySQL platform for sports talent detection, role-based dashboards, messaging, and AI-assisted video analysis.
+[![PHP Version](https://img.shields.io/badge/PHP-8.x-777BB4?style=flat&logo=php&logoColor=white)](https://php.net)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat&logo=mysql&logoColor=white)](https://mysql.com)
+[![OpenAI](https://img.shields.io/badge/OpenAI-API-412991?style=flat&logo=openai&logoColor=white)](https://openai.com)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Production Notes
+> Plateforme SaaS de détection de talents sportifs par intelligence artificielle
 
-- `schema.sql` is now schema-only. It does not create demo accounts.
-- Optional demo seed data lives in `seed_demo.sql`.
-- Demo mode is disabled by default. Enable it only for local development with `APP_ALLOW_DEMO_MODE=1`.
-- Uploaded videos are stored outside the public web root in `storage/uploads/` by default and are served through authenticated requests in `media.php`.
-- Public self-registration is restricted by `APP_ALLOWED_PUBLIC_REGISTRATION_ROLES` and defaults to `teacher`.
+## 🧠 À propos
 
-## Environment
+Atlas Talents connecte professeurs d'EPS, recruteurs et coachs autour d'un objectif commun : détecter les jeunes talents marocains grâce à un **agent IA** qui analyse automatiquement les performances vidéo sur 5 critères physiques.
 
-Configure these variables in your web server or PHP environment:
+### 🤖 Agent IA - Analyse vidéo intelligente
 
-```text
-APP_ENV=production
-APP_URL=https://your-domain.example
-APP_DEBUG=0
-APP_ALLOW_DEMO_MODE=0
-APP_DEMO_ACCESS_SECRET=
-APP_ALLOWED_PUBLIC_REGISTRATION_ROLES=teacher
+- Extraction automatique des keyframes côté navigateur
+- Analyse via **OpenAI GPT-4.1-mini** (vision)
+- Scoring sur 5 critères : Vitesse, Coordination, Endurance, Force, Souplesse
+- Génération de résumés, points forts, axes de progression et recommandations
+- Mode démo intelligent si l'API n'est pas configurée
 
-DB_HOST=localhost
-DB_NAME=atlas_talents
-DB_USER=atlas_user
-DB_PASS=change-me
-DB_CHARSET=utf8mb4
+## 👥 Rôles et fonctionnalités
 
-OPENAI_API_KEY=
-OPENAI_MODEL=gpt-4.1-mini
-OPENAI_API_URL=https://api.openai.com/v1/responses
-OPENAI_TIMEOUT=90
-AI_ALLOW_DEMO_FALLBACK=0
-```
+| Rôle | Fonctionnalités |
+|------|-----------------|
+| 👨‍🏫 Professeur | Upload vidéo + analyse IA, suivi élèves, export PDF |
+| 👟 Élève | Dashboard personnel, scores, progression |
+| 🧭 Manager | Pipeline recrutement, shortlist, messagerie fédérée |
+| 🏢 Recruteur | Filtres avancés, favoris, messagerie |
+| 🏅 Coach | Suivi athlètes, graphiques Chart.js, radar IA |
+| 🔧 Admin | Supervision plateforme, monitoring |
 
-Optional:
+## 🛠️ Stack technique
 
-```text
-APP_STORAGE_ROOT=/absolute/path/outside/webroot
-```
+| Catégorie | Technologies |
+|-----------|--------------|
+| Backend | PHP 8, PDO, MySQL, sessions sécurisées |
+| Frontend | HTML5/CSS3, JavaScript vanilla, Design System custom |
+| IA | OpenAI API (GPT-4.1-mini), vision, extraction keyframes |
+| Graphiques | Chart.js (line, bar, radar, doughnut) |
+| Sécurité | CSRF, CSP, headers HTTP, stockage hors webroot |
+| API | REST endpoints (JSON) |
+| Déploiement | Apache / XAMPP, compatible mutualisé/VPS |
 
-## Owner Demo Access
-
-If you want fast personal demo access on a public deployment without restoring public demo credentials:
-
-1. Set `APP_DEMO_ACCESS_SECRET` to a strong private value.
-2. Open:
-
-```text
-https://your-domain.example/pages/auth/login.php?demo_key=your-secret
-```
-
-3. The login page will unlock one-click demo session buttons for your browser session only.
-
-This is safer than permanent public demo logins, but the secret still grants privileged demo access. Treat it like a password and rotate it if exposed.
-
-## Setup
-
-1. Import the schema:
+## 🚀 Installation rapide
 
 ```bash
-mysql -u your_user -p < schema.sql
-```
+# 1. Cloner le projet
+git clone https://github.com/VOTRE-PSEUDO/atlas-talents.git
+cd atlas-talents
 
-2. Optionally load demo data in a non-production environment:
+# 2. Copier la configuration
+cp .env.example .env
+# Éditez .env avec vos paramètres (DB, OpenAI, etc.)
 
-```bash
-mysql -u your_user -p atlas_talents < seed_demo.sql
-```
+# 3. Importer la base de données
+mysql -u root -p < schema.sql
 
-3. Ensure PHP can write to:
+# 4. (Optionnel) Importer les données démo
+mysql -u root -p atlas_talents < seed_demo.sql
 
-- `storage/uploads/`
-- `storage/private/`
+# 5. Créer les dossiers de stockage
+mkdir -p storage/uploads storage/private
+chmod 755 storage/uploads storage/private
 
-4. Serve the project through Apache or another PHP-capable web server with HTTPS enabled.
-
-## Security Defaults
-
-- Session cookies use `HttpOnly`, `SameSite=Lax`, and `Secure` when the request is HTTPS.
-- Logout requires `POST` plus CSRF validation.
-- API errors are generic by default unless `APP_DEBUG=1`.
-- Legacy files under `public/uploads/` are protected by `.htaccess`.
-
-## Development
-
-If you explicitly want demo behavior locally:
-
-```text
-APP_ENV=development
-APP_ALLOW_DEMO_MODE=1
-APP_ALLOWED_PUBLIC_REGISTRATION_ROLES=teacher,manager,recruiter,coach
-AI_ALLOW_DEMO_FALLBACK=1
-```
+# 6. Lancer le serveur
+php -S localhost:8000
+# Ou utilisez Apache avec DocumentRoot pointant vers le dossier
