@@ -1,5 +1,40 @@
-# Atlas Talents
+# Atlas Talents 🎯
 
+[![PHP Version](https://img.shields.io/badge/PHP-8.x-777BB4?style=flat&logo=php&logoColor=white)](https://php.net)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat&logo=mysql&logoColor=white)](https://mysql.com)
+[![OpenAI](https://img.shields.io/badge/OpenAI-API-412991?style=flat&logo=openai&logoColor=white)](https://openai.com)
+
+> Plateforme SaaS de détection de talents sportifs par intelligence artificielle
+
+## 🤖 Agent IA – Analyse vidéo intelligente
+
+- Extraction automatique des keyframes côté navigateur
+- Analyse via **OpenAI GPT-4.1-mini** (vision)
+- Scoring sur 5 critères : Vitesse, Coordination, Endurance, Force, Souplesse
+- Génération de résumés, points forts, axes de progression et recommandations
+- Mode démo intelligent si l’API OpenAI n’est pas configurée
+
+## 👥 6 rôles métiers – Dashboards dédiés
+
+| Rôle | Fonctionnalités clés |
+|------|----------------------|
+| 👨‍🏫 Professeur | Upload vidéo + analyse IA, suivi élèves, export PDF |
+| 👟 Élève | Dashboard personnel, scores, progression |
+| 🧭 Manager recrutement | Pipeline talents, shortlist, messagerie fédérée |
+| 🏢 Recruteur | Filtres avancés, favoris, messagerie |
+| 🏅 Coach | Suivi athlètes, graphiques Chart.js, radar IA |
+| 🔧 Admin | Supervision plateforme, monitoring |
+
+## 🛠️ Stack technique
+
+| Catégorie | Technologies |
+|-----------|--------------|
+| Backend | PHP 8, PDO, MySQL, sessions sécurisées |
+| Frontend | HTML5/CSS3, JavaScript vanilla, Design System custom |
+| IA | OpenAI API (vision), extraction keyframes navigateur |
+| Graphiques | Chart.js (line, bar, radar, doughnut) |
+| Sécurité | CSRF, CSP, en-têtes HTTP, stockage hors webroot |
+| API | REST endpoints (JSON) |
 PHP/MySQL platform for sports talent detection, role-based dashboards, messaging, and AI-assisted video analysis.
 
 ## Production Notes
