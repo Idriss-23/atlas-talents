@@ -11,25 +11,35 @@
 
 ## 📸 Aperçu de la plateforme
 
-| Page d'accueil | Fonctionnalités |
-|----------------|-----------------|
-| ![Landing](1-landing-page.png) | ![Features](2-features.png) |
+### Page d'accueil
+![Landing](screenshots/1-landing-page.png)
 
-| Connexion | Dashboard Professeur |
-|-----------|---------------------|
-| ![Login](3-login-page.png) | ![Professeur](4-teacher-dashboard.png) |
+### Fonctionnalités
+![Features](screenshots/2-features.png)
 
-| Upload vidéo | Dashboard Élève |
-|--------------|-----------------|
-| ![Upload](5-upload-modal.png) | ![Élève](6-student-dashboard.png) |
+### Connexion
+![Login](screenshots/3-login-page.png)
 
-| Dashboard Manager | Dashboard Recruteur |
-|-------------------|---------------------|
-| ![Manager](7-manager-dashboard.png) | ![Recruteur](8-recruiter-dashboard.png) |
+### Dashboard Professeur
+![Professeur](screenshots/4-teacher-dashboard.png)
 
-| Dashboard Coach | Messagerie |
-|-----------------|------------|
-| ![Coach](9-coach-dashboard.png) | ![Chat](10-chat-panel.png) |
+### Upload vidéo
+![Upload](screenshots/5-upload-modal.png)
+
+### Dashboard Élève
+![Élève](screenshots/6-student-dashboard.png)
+
+### Dashboard Manager
+![Manager](screenshots/7-manager-dashboard.png)
+
+### Dashboard Recruteur
+![Recruteur](screenshots/8-recruiter-dashboard.png)
+
+### Dashboard Coach
+![Coach](screenshots/9-coach-dashboard.png)
+
+### Messagerie intégrée
+![Chat](screenshots/10-chat-panel.png)
 
 ---
 
@@ -75,9 +85,21 @@
 ## 🚀 Installation rapide
 
 ```bash
+# 1. Cloner le projet
 git clone https://github.com/Idriss-23/atlas-talents.git
 cd atlas-talents
+
+# 2. Copier la configuration
 cp .env.example .env
-# Configurez votre base de données et clé OpenAI
+
+# 3. Configurer la base de données
+# Éditez .env avec vos identifiants MySQL
+
+# 4. Importer le schéma
 mysql -u root -p < schema.sql
+
+# 5. (Optionnel) Importer les données démo
+mysql -u root -p atlas_talents < seed_demo.sql
+
+# 6. Lancer le serveur
 php -S localhost:8000
